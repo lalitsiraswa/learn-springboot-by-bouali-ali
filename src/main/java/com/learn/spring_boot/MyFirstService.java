@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 public class MyFirstService {
     private final MyFirstComponent firstComponent;
 
-    public MyFirstService(@Qualifier("bean2") MyFirstComponent firstComponent) {
+    public MyFirstService(MyFirstComponent firstComponent) {
         this.firstComponent = firstComponent;
     }
 
