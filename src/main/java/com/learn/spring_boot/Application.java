@@ -14,7 +14,7 @@ public class Application {
         System.out.println(firstComponent.sayHello());
     }
 
-    @Bean
+    //    @Bean
     public MyFirstComponent myFirstComponent() {
         return new MyFirstComponent();
     }
