@@ -18,7 +18,7 @@ public class ApplicationConfig {
     }
 
     @Bean
-    @Primary
+//    @Primary
     public MyFirstComponent myThirdComponent() {
         return new MyFirstComponent("Third Bean");
     }
