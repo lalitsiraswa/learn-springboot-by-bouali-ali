@@ -10,7 +10,7 @@ public class Application {
     public static void main(String[] args) {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(Application.class, args);
 //        MyFirstComponent firstComponent = applicationContext.getBean(MyFirstComponent.class);
-        MyFirstComponent firstComponent = applicationContext.getBean("myBean", MyFirstComponent.class);
+        MyFirstComponent firstComponent = applicationContext.getBean("myFirstComponent", MyFirstComponent.class);
         System.out.println(firstComponent.sayHello());
     }
 }
