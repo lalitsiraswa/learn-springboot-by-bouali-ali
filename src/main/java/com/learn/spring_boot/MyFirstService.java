@@ -1,12 +1,13 @@
 package com.learn.spring_boot;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MyFirstService {
     private final MyFirstComponent firstComponent;
 
-    public MyFirstService(MyFirstComponent firstComponent) {
+    public MyFirstService(@Qualifier("bean2") MyFirstComponent firstComponent) {
         this.firstComponent = firstComponent;
     }
 
