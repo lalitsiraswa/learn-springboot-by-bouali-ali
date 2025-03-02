@@ -12,5 +12,8 @@ public class Application {
 //        MyFirstComponent firstComponent = applicationContext.getBean(MyFirstComponent.class);
         MyFirstComponent firstComponent = applicationContext.getBean("myFirstComponent", MyFirstComponent.class);
         System.out.println(firstComponent.sayHello());
+
+        MyFirstService myFirstService = applicationContext.getBean(MyFirstService.class);
+        System.out.println(myFirstService.tellAStory());
     }
 }
