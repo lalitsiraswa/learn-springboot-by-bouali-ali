@@ -17,5 +17,7 @@ public class Application {
         System.out.println(myFirstService.tellAStory());
         System.out.println("custom Property From Another File : " + myFirstService.getCustomPropertyFromAnotherFile());
         System.out.println("custom Property From Another File - 2 : " + myFirstService.getCustomPropertyFromAnotherFile2());
+        System.out.println("Reading value from application.properties : " + myFirstService.getCustomProperty());
+        System.out.println("Reading Integer value from application.properties : " + myFirstService.getCustomPropertyInt());
     }
 }
