@@ -7,16 +7,15 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
+@Profile("dev")
 public class ApplicationConfig {
     @Bean
     @Qualifier("bean1")
-    @Profile("dev")
     public MyFirstComponent myFirstComponent() {
         return new MyFirstComponent("First Bean");
     }
 
     @Bean
-    @Profile("test")
     public MyFirstComponent mySecondComponent() {
         return new MyFirstComponent("Second Bean");
     }

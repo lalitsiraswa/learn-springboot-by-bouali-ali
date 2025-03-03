@@ -12,6 +12,7 @@ public class Application {
     public static void main(String[] args) {
         var application = new SpringApplication(Application.class);
         application.setDefaultProperties(Collections.singletonMap("spring.profiles.active", "dev"));
+
 //        ConfigurableApplicationContext applicationContext = SpringApplication.run(Application.class, args);
         ConfigurableApplicationContext applicationContext = application.run(args);
 //        MyFirstComponent firstComponent = applicationContext.getBean(MyFirstComponent.class);
