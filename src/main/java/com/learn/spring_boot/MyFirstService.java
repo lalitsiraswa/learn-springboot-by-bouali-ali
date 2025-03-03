@@ -9,7 +9,7 @@ public class MyFirstService {
     private MyFirstComponent firstComponent;
 
     @Autowired
-    public void injectDependencies(@Qualifier("bean1") MyFirstComponent myFirstComponent) {
+    public void setMyFirstComponent(@Qualifier("bean1") MyFirstComponent myFirstComponent) {
         this.firstComponent = myFirstComponent;
     }
 
