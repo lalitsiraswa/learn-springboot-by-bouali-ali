@@ -1,9 +1,6 @@
 package com.learn.spring_boot;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class FirstController {
@@ -25,5 +22,10 @@ public class FirstController {
     @PostMapping("/post-order-record")
     public String postOrderRecord(@RequestBody OrderRecord orderRecord) {
         return "Request Accepted! and order is : " + orderRecord.toString();
+    }
+
+    @GetMapping("/hello/{user-name}/{email}")
+    public String pathVariable(@PathVariable("user-name") String userName, @PathVariable String email) {
+        return "Path-Variable Values => UserName : " + userName + ", Email : " + email;
     }
 }
