@@ -31,6 +31,7 @@ public class FirstController {
     }
 
     //    http://localhost:8080/request-param?user-name=lalitsiraswa&email=lalitsiraswa@gmail.com
+    //    @RequestParam: this annotation is used to extract Query Parameters from the URL.
     @GetMapping("/request-param")
     public String requestParam(@RequestParam("user-name") String userName, @RequestParam String email) {
         return "Request-Param Values => UserName : " + userName + ", Email : " + email;
