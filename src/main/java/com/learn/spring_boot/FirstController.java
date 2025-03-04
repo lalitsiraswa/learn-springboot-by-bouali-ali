@@ -24,6 +24,7 @@ public class FirstController {
         return "Request Accepted! and order is : " + orderRecord.toString();
     }
 
+    // http://localhost:8080/hello/lalitsiraswa/lalitsiraswa@gmail.com
     @GetMapping("/hello/{user-name}/{email}")
     public String pathVariable(@PathVariable("user-name") String userName, @PathVariable String email) {
         return "Path-Variable Values => UserName : " + userName + ", Email : " + email;
