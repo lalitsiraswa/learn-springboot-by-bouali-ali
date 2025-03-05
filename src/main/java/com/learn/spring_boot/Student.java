@@ -1,15 +1,13 @@
 package com.learn.spring_boot;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "students")
 public class Student {
     //    primary key
     @Id
+    @GeneratedValue
     private Integer id;
     @Column(
             name = "fname",
