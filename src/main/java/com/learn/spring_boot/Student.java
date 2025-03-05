@@ -1,15 +1,25 @@
 package com.learn.spring_boot;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "students")
 public class Student {
     //    primary key
     @Id
     private Integer id;
+    @Column(
+            name = "fname",
+            length = 20
+    )
     private String firstname;
     private String lastname;
+    @Column(
+            unique = true
+    )
     private String email;
     private int age;
 
