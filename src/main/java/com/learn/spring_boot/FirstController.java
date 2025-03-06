@@ -3,6 +3,9 @@ package com.learn.spring_boot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @RestController
 public class FirstController {
     private final StudentRepository repository;
@@ -15,6 +18,16 @@ public class FirstController {
     @PostMapping("/students")
     public Student post(@RequestBody Student student) {
         return repository.save(student);
+    }
+
+    @GetMapping("/students")
+    public List<Student> findAllStudents() {
+        return repository.findAll();
+    }
+
+    @GetMapping("/students/{student-id}")
+    public Student findStudentById(@PathVariable("student-id") Integer studentId) {
+        return repository.findById(studentId).orElse(new Student());
     }
 
     //    ----------------------------------------------------------------------------------------------------
