@@ -42,6 +42,11 @@ public class FirstController {
         repository.deleteById(id);
     }
 
+    @PutMapping("/students")
+    public Student update(@RequestBody Student student) {
+        return repository.save(student);
+    }
+
     //    ----------------------------------------------------------------------------------------------------
     @GetMapping("/hello")
     public String sayHello() {
