@@ -1,6 +1,7 @@
 package com.learn.spring_boot;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,6 +34,12 @@ public class FirstController {
     @GetMapping("/students/search/{student-name}")
     public List<Student> findStudentByName(@PathVariable("student-name") String name) {
         return repository.findAllByFirstnameContaining(name);
+    }
+
+    @DeleteMapping("/students/{student-id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable("student-id") Integer id) {
+        repository.deleteById(id);
     }
 
     //    ----------------------------------------------------------------------------------------------------
