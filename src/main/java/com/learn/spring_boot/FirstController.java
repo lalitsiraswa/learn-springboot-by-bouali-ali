@@ -1,9 +1,23 @@
 package com.learn.spring_boot;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class FirstController {
+    private final StudentRepository repository;
+
+    @Autowired // Optional -> Constructor Injection
+    public FirstController(StudentRepository repository) {
+        this.repository = repository;
+    }
+
+    @PostMapping("/students")
+    public Student post(@RequestBody Student student) {
+        return repository.save(student);
+    }
+
+    //    ----------------------------------------------------------------------------------------------------
     @GetMapping("/hello")
     public String sayHello() {
         return "Hello World! From My First Controller.";
