@@ -5,14 +5,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-public class FirstController {
+public class StudentController {
     private final StudentRepository repository;
 
     @Autowired // Optional -> Constructor Injection
-    public FirstController(StudentRepository repository) {
+    public StudentController(StudentRepository repository) {
         this.repository = repository;
     }
 
