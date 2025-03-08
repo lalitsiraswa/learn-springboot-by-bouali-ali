@@ -1,5 +1,6 @@
 package com.learn.spring_boot.student;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class StudentController {
     }
 
     @PostMapping("/students")
-    public StudentResponseDto saveStudent(@RequestBody StudentDto studentDto) {
+    public StudentResponseDto saveStudent(@Valid @RequestBody StudentDto studentDto) {
         return this.studentService.saveStudent(studentDto);
     }
 
