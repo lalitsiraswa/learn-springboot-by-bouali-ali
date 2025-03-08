@@ -19,26 +19,34 @@ public class StudentService {
     public StudentResponseDto saveStudent(StudentDto studentDto) {
         var student = studentMapper.toStudent(studentDto);
         var savedStudent = repository.save(student);
-        return studentMapper.toStudentResponseDto(savedStudent);
+        return this.studentMapper.toStudentResponseDto(savedStudent);
     }
 
-    public List<Student> findAllStudents() {
-        return repository.findAll();
+    public List<StudentResponseDto> findAllStudents() {
+        return this.repository.findAll()
+                .stream()
+                .map(this.studentMapper::toStudentResponseDto)
+                .toList();
     }
 
-    public Student findStudentById(Integer studentId) {
-        return repository.findById(studentId).orElse(new Student());
+    public StudentResponseDto findStudentById(Integer studentId) {
+        return this.repository.findById(studentId)
+                .map(this.studentMapper::toStudentResponseDto)
+                .orElse(null);
     }
 
-    public List<Student> findStudentByName(String name) {
-        return repository.findAllByFirstnameContaining(name);
+    public List<StudentResponseDto> findStudentByName(String name) {
+        return this.repository.findAllByFirstnameContaining(name)
+                .stream()
+                .map(this.studentMapper::toStudentResponseDto)
+                .toList();
     }
 
     public void deleteStudentById(Integer studentId) {
-        repository.deleteById(studentId);
+        this.repository.deleteById(studentId);
     }
 
-    public Student updateStudent(Student student) {
-        return repository.save(student);
+    public StudentResponseDto updateStudent(Student student) {
+        return this.studentMapper.toStudentResponseDto(repository.save(student));
     }
 }
