@@ -8,46 +8,42 @@ import java.util.List;
 
 @RestController
 public class StudentController {
-    private final StudentRepository repository;
-    private final StudentMapper studentMapper;
+    private final StudentService studentService;
 
     @Autowired // Optional -> Constructor Injection
-    public StudentController(StudentRepository repository, StudentMapper studentMapper) {
-        this.repository = repository;
-        this.studentMapper = studentMapper;
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
     }
 
     @PostMapping("/students")
-    public StudentResponseDto post(@RequestBody StudentDto studentDto) {
-        var student = studentMapper.toStudent(studentDto);
-        var savedStudent = repository.save(student);
-        return studentMapper.toStudentResponseDto(savedStudent);
+    public StudentResponseDto saveStudent(@RequestBody StudentDto studentDto) {
+        return this.studentService.saveStudent(studentDto);
     }
 
     @GetMapping("/students")
     public List<Student> findAllStudents() {
-        return repository.findAll();
+        return this.studentService.findAllStudents();
     }
 
     @GetMapping("/students/{student-id}")
     public Student findStudentById(@PathVariable("student-id") Integer studentId) {
-        return repository.findById(studentId).orElse(new Student());
+        return this.studentService.findStudentById(studentId);
     }
 
     @GetMapping("/students/search/{student-name}")
     public List<Student> findStudentByName(@PathVariable("student-name") String name) {
-        return repository.findAllByFirstnameContaining(name);
+        return this.studentService.findStudentByName(name);
     }
 
     @DeleteMapping("/students/{student-id}")
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable("student-id") Integer id) {
-        repository.deleteById(id);
+        this.studentService.deleteStudentById(id);
     }
 
     @PutMapping("/students")
     public Student update(@RequestBody Student student) {
-        return repository.save(student);
+        return this.studentService.updateStudent(student);
     }
 
     //    ----------------------------------------------------------------------------------------------------
