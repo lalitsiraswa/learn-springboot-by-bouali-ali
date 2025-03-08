@@ -1,4 +1,4 @@
-package com.learn.spring_boot;
+package com.learn.spring_boot.student;
 
 public record StudentDto(
         String firstname,

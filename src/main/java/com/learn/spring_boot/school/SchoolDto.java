@@ -1,4 +1,4 @@
-package com.learn.spring_boot;
+package com.learn.spring_boot.school;
 
 public record SchoolDto(
         String name

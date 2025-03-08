@@ -1,6 +1,8 @@
-package com.learn.spring_boot;
+package com.learn.spring_boot.student;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.learn.spring_boot.studentprofile.StudentProfile;
+import com.learn.spring_boot.school.School;
 import jakarta.persistence.*;
 
 @Entity

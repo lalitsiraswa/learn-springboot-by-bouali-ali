@@ -1,4 +1,4 @@
-package com.learn.spring_boot;
+package com.learn.spring_boot.student;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

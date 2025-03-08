@@ -1,4 +1,4 @@
-package com.learn.spring_boot;
+package com.learn.spring_boot.school;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,4 +1,4 @@
-package com.learn.spring_boot;
+package com.learn.spring_boot.student;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
