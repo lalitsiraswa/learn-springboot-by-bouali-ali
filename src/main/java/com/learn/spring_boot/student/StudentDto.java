@@ -3,9 +3,9 @@ package com.learn.spring_boot.student;
 import jakarta.validation.constraints.NotEmpty;
 
 public record StudentDto(
-        @NotEmpty
+        @NotEmpty(message = "Firstname should not be empty!")
         String firstname,
-        @NotEmpty
+        @NotEmpty(message = "Lastname should not be empty!")
         String lastname,
         String email,
         Integer schoolId
