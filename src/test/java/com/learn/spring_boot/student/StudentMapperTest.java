@@ -1,18 +1,26 @@
 package com.learn.spring_boot.student;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 class StudentMapperTest {
-    @AfterEach
-    void tearDown() {
-        System.out.println("Inside @AfterEach Method!");
+    @BeforeAll
+    static void beforeAll() {
+        System.out.println("Inside @BeforeAll Method!");
+    }
+
+    @AfterAll
+    static void afterAll() {
+        System.out.println("Inside @AfterAll Method!");
     }
 
     @BeforeEach
     void setUp() {
         System.out.println("Inside @BeforeEach Method!");
+    }
+
+    @AfterEach
+    void tearDown() {
+        System.out.println("Inside @AfterEach Method!");
     }
 
     @Test
