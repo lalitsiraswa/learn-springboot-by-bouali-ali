@@ -29,7 +29,8 @@ class StudentMapperTest {
 
     @Test
     public void should_throw_null_pointer_exception_when_studentDto_is_null() {
-        assertThrows(NullPointerException.class, () -> studentMapper.toStudent(null));
+        Exception exception = assertThrows(NullPointerException.class, () -> studentMapper.toStudent(null));
+        assertEquals("The Student Dto should not be null!", exception.getMessage());
     }
 
     @Test
