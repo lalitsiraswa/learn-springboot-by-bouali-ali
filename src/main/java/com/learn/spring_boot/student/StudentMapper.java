@@ -3,9 +3,14 @@ package com.learn.spring_boot.student;
 import com.learn.spring_boot.school.School;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service
 public class StudentMapper {
     public Student toStudent(StudentDto dto) {
+        if (Objects.isNull(dto)) {
+            throw new NullPointerException("The Student Dto should not be null!");
+        }
         var student = new Student();
         student.setFirstname(dto.firstname());
         student.setLastname(dto.lastname());

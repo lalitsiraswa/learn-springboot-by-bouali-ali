@@ -3,8 +3,7 @@ package com.learn.spring_boot.student;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class StudentMapperTest {
     private StudentMapper studentMapper;
@@ -26,6 +25,11 @@ class StudentMapperTest {
         assertEquals(studentDto.email(), student.getEmail());
         assertNotNull(student.getSchool());
         assertEquals(studentDto.schoolId(), student.getSchool().getId());
+    }
+
+    @Test
+    public void should_throw_null_pointer_exception_when_studentDto_is_null() {
+        assertThrows(NullPointerException.class, () -> studentMapper.toStudent(null));
     }
 
     @Test
