@@ -8,6 +8,7 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -78,5 +79,27 @@ class StudentServiceTest {
 //        Then
         assertEquals(students.size(), studentResponseDtoList.size());
         verify(studentRepository, times(1)).findAll();
+    }
+
+    @Test
+    public void should_return_student_by_id() {
+//        Given
+        Integer studentId = 1;
+        Student student = new Student("Lalit", "Siraswa", "lalitsiraswa@gmail.com", 25);
+        StudentResponseDto studentResponseDto = new StudentResponseDto(student.getFirstname(), student.getLastname(), student.getEmail());
+
+//        Mock the calls
+        when(studentRepository.findById(studentId)).thenReturn(Optional.of(student));
+        when(studentMapper.toStudentResponseDto(student)).thenReturn(studentResponseDto);
+
+//        When
+        StudentResponseDto responseDto = studentService.findStudentById(studentId);
+//        Then
+        assertEquals(student.getFirstname(), responseDto.firstname());
+        assertEquals(student.getLastname(), responseDto.lastname());
+        assertEquals(student.getEmail(), responseDto.email());
+
+        verify(studentRepository, times(1)).findById(studentId);
+        verify(studentMapper, times(1)).toStudentResponseDto(student);
     }
 }
