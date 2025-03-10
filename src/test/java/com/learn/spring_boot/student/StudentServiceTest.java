@@ -6,6 +6,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
@@ -49,5 +52,31 @@ class StudentServiceTest {
         verify(studentMapper, times(1)).toStudent(studentDto);
         verify(studentRepository, times(1)).save(student);
         verify(studentMapper, times(1)).toStudentResponseDto(savedStudent);
+    }
+
+    @Test
+    public void should_return_all_students() {
+//        Given
+        List<Student> students = new ArrayList<>();
+        students.add(new Student("Lalit", "Siraswa", "lalitsiraswa@gmail.com", 25));
+        students.add(new Student("Krishna", "Siraswa", "krishnasiraswa@gmail.com", 30));
+        students.add(new Student("Jyoti", "Siraswa", "jyotisiraswa@gmail.com", 28));
+
+        List<StudentResponseDto> studentResponseDtos = new ArrayList<>();
+        studentResponseDtos.add(new StudentResponseDto("Lalit", "Siraswa", "lalitsiraswa@gmail.com"));
+        studentResponseDtos.add(new StudentResponseDto("Krishna", "Siraswa", "krishnasiraswa@gmail.com"));
+        studentResponseDtos.add(new StudentResponseDto("Jyoti", "Siraswa", "jyotisiraswa@gmail.com"));
+
+//        Mock the calls
+        when(studentRepository.findAll()).thenReturn(students);
+        for (int i = 0; i < students.size(); i++) {
+            when(studentMapper.toStudentResponseDto(students.get(i))).thenReturn(studentResponseDtos.get(i));
+        }
+
+//        When
+        List<StudentResponseDto> studentResponseDtoList = studentService.findAllStudents();
+//        Then
+        assertEquals(students.size(), studentResponseDtoList.size());
+        verify(studentRepository, times(1)).findAll();
     }
 }
