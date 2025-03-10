@@ -4,11 +4,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.*;
 
 class StudentServiceTest {
     //    Which service we want to test.
@@ -44,5 +44,10 @@ class StudentServiceTest {
         assertEquals(studentDto.firstname(), studentResponseDto.firstname());
         assertEquals(studentDto.lastname(), studentResponseDto.lastname());
         assertEquals(studentDto.email(), studentResponseDto.email());
+
+//        Adding Verification on Calling all the functions(studentMapper.toStudent, studentRepository.save, studentMapper.toStudentResponseDto) only once, So it will not create duplicate entries in the database.
+        verify(studentMapper, times(1)).toStudent(studentDto);
+        verify(studentRepository, times(1)).save(student);
+        verify(studentMapper, times(1)).toStudentResponseDto(savedStudent);
     }
 }
